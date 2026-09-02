@@ -1,0 +1,45 @@
+{
+  "summary": "Light verification of vercel.json fix + regression smoke. vercel.json is valid JSON with correct SPA config. Production build (CI=true yarn build) completed successfully with 'Compiled successfully.' — no ESLint warnings-as-errors, exit 0, ~17s. Frontend home renders featured-grid and popular-cities-grid; header-admin-link navigates to /admin; admin login (admin/admin123) reaches /admin/dashboard. Backend /api/courses and /api/content OK. Note: current DB has 149 courses & 2 featured (not 151/3 as stated in request) — this is DB drift from prior admin edits, not caused by the vercel.json change; seeding is empty-DB-only.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "vercel_config_check": {
+    "file": "/app/vercel.json",
+    "valid_json": true,
+    "framework": "create-react-app",
+    "installCommand": "cd frontend && yarn install --frozen-lockfile",
+    "buildCommand": "cd frontend && yarn build",
+    "outputDirectory": "frontend/build",
+    "spa_rewrite_excludes_api": true,
+    "local_build_ci_true_exit_code": 0,
+    "build_output_present": ["build/index.html", "build/static/js", "build/static/css"]
+  },
+  "regression_smoke": {
+    "home_featured_grid_present": true,
+    "home_featured_cards_count": 2,
+    "home_popular_cities_count": 12,
+    "header_admin_link_navigates": true,
+    "admin_login_success": true,
+    "stat_total_courses": 149,
+    "api_courses_count": 149,
+    "api_content_heroTitle1": "Your Next Adventure"
+  },
+  "test_report_links": ["/app/test_reports/iteration_1.json"],
+  "action_items": [
+    "Optional: Verify expected featured/course counts. Request stated 151 courses / 3 featured, actual is 149 / 2. If those specific numbers matter, reseed DB or make seed idempotent-refresh. Otherwise no action needed — vercel.json fix is correct and complete."
+  ],
+  "critical_code_review_comments": [
+    "vercel.json rewrite regex '/((?!api/).*)' correctly excludes /api/* from SPA fallback so Vercel will forward /api routes to a separate backend if configured; this is client-side rewrites only — user must still deploy FastAPI backend separately (Vercel Serverless or external) and set REACT_APP_BACKEND_URL to it at build time.",
+    "seed_admin/course seeding only runs when DB collections are empty, causing count drift over time as data is edited/deleted through admin panel."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "admin / admin123 (from /app/memory/test_credentials.md)",
+  "seed_data_creation": "None. No test data created.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iteration_1 already covered full CRUD (23/23). This iteration verified only the vercel.json deployment fix + light regression. Actual Vercel deployment cannot be verified from this environment."
+}

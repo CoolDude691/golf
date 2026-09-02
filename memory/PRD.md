@@ -21,6 +21,7 @@ Pixel-perfect clone of https://www.minigolfusa.online/ (design, layout, colors, 
 - Seeding on startup: admin from env (`ADMIN_USERNAME`/`ADMIN_PASSWORD`), 151 courses across 50 states, default site content
 - Testing: iteration_1 – backend 23/23, frontend 100%
 - Admin link: visible "Admin" pill in header nav (desktop + mobile menu) and "Admin Login" button in footer → /admin
+- Deployment: `/app/vercel.json` added (builds /frontend, SPA rewrites) after user hit Vercel "No entrypoint" error; CI=true build verified (iteration_2). Backend cannot run on Vercel — recommended Emergent Deploy.
 
 ## Backlog
 - P1: Blog page (header link `#blog` is a placeholder)
