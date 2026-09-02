@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { MapPin, Search, Star, Menu, X } from "lucide-react";
+import { MapPin, Search, Star, Menu, X, Lock } from "lucide-react";
 import { stateByCode } from "../constants";
 import { getCourses } from "../api";
 
@@ -68,6 +68,13 @@ const Header = () => {
               >
                 Blog
               </a>
+              <Link
+                to="/admin"
+                data-testid="header-admin-link"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition-[background-color,color,border-color]"
+              >
+                <Lock className="w-3.5 h-3.5" /> Admin
+              </Link>
             </nav>
           </div>
 
@@ -145,6 +152,14 @@ const Header = () => {
           <a href="#blog" className="block py-2 text-sm font-medium text-gray-700">
             Blog
           </a>
+          <Link
+            to="/admin"
+            onClick={() => setMobileOpen(false)}
+            data-testid="mobile-admin-link"
+            className="block py-2 text-sm font-semibold text-emerald-700"
+          >
+            Admin Login
+          </Link>
         </div>
       )}
     </header>

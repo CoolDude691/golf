@@ -75,9 +75,10 @@ const Footer = () => {
           </p>
           <Link
             to="/admin"
-            className="inline-block mt-2 text-xs text-gray-400 hover:text-emerald-600 transition-colors"
+            data-testid="footer-admin-link"
+            className="inline-block mt-3 px-4 py-1.5 text-xs font-semibold text-emerald-700 border border-emerald-200 rounded-full hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition-[background-color,color,border-color]"
           >
-            Admin
+            Admin Login
           </Link>
         </div>
       </div>

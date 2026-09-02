@@ -20,6 +20,7 @@ Pixel-perfect clone of https://www.minigolfusa.online/ (design, layout, colors, 
 - Admin: JWT login (`/api/auth/login`, `/api/auth/me`), brute-force lockout (5 fails/15 min), course CRUD, featured toggle, homepage content editor (`PUT /api/content`)
 - Seeding on startup: admin from env (`ADMIN_USERNAME`/`ADMIN_PASSWORD`), 151 courses across 50 states, default site content
 - Testing: iteration_1 – backend 23/23, frontend 100%
+- Admin link: visible "Admin" pill in header nav (desktop + mobile menu) and "Admin Login" button in footer → /admin
 
 ## Backlog
 - P1: Blog page (header link `#blog` is a placeholder)
