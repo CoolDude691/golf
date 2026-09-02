@@ -1,0 +1,30 @@
+.App {
+    min-height: 100vh;
+    background: #ffffff;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom selection color */
+::selection {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+/* Subtle scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f3f4f6;
+}
+::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
